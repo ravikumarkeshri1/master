@@ -1,0 +1,120 @@
+deligence@Deligence:~/Ravi_Training/your-first-pwapp-master/final$ sudo npm install -g firebase-tools
+[sudo] password for deligence: 
+/usr/local/bin/firebase -> /usr/local/lib/node_modules/firebase-tools/bin/firebase
+
+> @google-cloud/functions-emulator@1.0.0-beta.5 postinstall /usr/local/lib/node_modules/firebase-tools/node_modules/@google-cloud/functions-emulator
+> node scripts/upgrade-warning
+
+
+If you're using the Emulator via the Firebase CLI, you can
+disregard this message.
+
+If you're upgrading @google-cloud/functions-emulator, these
+are the recommended upgrade steps:
+
+1.  Stop the currently running emulator, if any:
+
+        functions stop
+
+2.  Uninstall the current emulator, if any:
+
+        npm uninstall -g @google-cloud/functions-emulator
+
+3.  Install the new version of the emulator:
+
+        npm install -g @google-cloud/functions-emulator
+
+If you have trouble after upgrading, try deleting the config
+directory found in:
+
+    ~/.config/configstore/@google-cloud/functions-emulator
+
+Then restart the emulator. You can also check for any renegade
+Node.js emulator processes that may need to be killed:
+
+    ps aux | grep node
+
++ firebase-tools@4.1.1
+added 557 packages in 9.28s
+deligence@Deligence:~/Ravi_Training/your-first-pwapp-master/final$ sudo firebase login
+? Allow Firebase to collect anonymous CLI usage and error reporting information?
+ Yes
+
+Visit this URL on any device to log in:
+https://accounts.google.com/o/oauth2/auth?client_id=563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com&scope=email%20openid%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloudplatformprojects.readonly%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Ffirebase%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloud-platform&response_type=code&state=747974641&redirect_uri=http%3A%2F%2Flocalhost%3A9005
+
+Waiting for authentication...
+
+✔  Success! Logged in as ravikumar.deligence@gmail.com
+deligence@Deligence:~/Ravi_Training/your-first-pwapp-master/final$ firebase init/usr/local/lib/node_modules/firebase-tools/node_modules/configstore/index.js:53
+				throw err;
+				^
+
+Error: EACCES: permission denied, open '/home/deligence/.config/configstore/update-notifier-firebase-tools.json'
+You don't have access to this file.
+
+    at Object.fs.openSync (fs.js:667:18)
+    at Object.fs.readFileSync (fs.js:572:33)
+    at Configstore.get (/usr/local/lib/node_modules/firebase-tools/node_modules/configstore/index.js:34:26)
+    at new Configstore (/usr/local/lib/node_modules/firebase-tools/node_modules/configstore/index.js:27:45)
+    at new UpdateNotifier (/usr/local/lib/node_modules/firebase-tools/node_modules/update-notifier/index.js:34:17)
+    at module.exports (/usr/local/lib/node_modules/firebase-tools/node_modules/update-notifier/index.js:123:23)
+    at Object.<anonymous> (/usr/local/lib/node_modules/firebase-tools/bin/firebase:5:48)
+    at Module._compile (module.js:649:30)
+    at Object.Module._extensions..js (module.js:660:10)
+    at Module.load (module.js:561:32)
+deligence@Deligence:~/Ravi_Training/your-first-pwapp-master/final$ sudo firebase init
+
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /home/deligence/Ravi_Training/your-first-pwapp-master/final
+
+? Which Firebase CLI features do you want to setup for this folder? Press Space 
+to select features, then Enter to confirm your choices. Hosting: Configure and d
+eploy Firebase Hosting sites
+
+=== Project Setup
+
+First, let's associate this project directory with a Firebase project.
+You can create multiple project aliases by running firebase use --add, 
+but for now we'll just set up a default project.
+
+? Select a default Firebase project for this directory: pwaapptest (pwaapptest)
+
+=== Hosting Setup
+
+Your public directory is the folder (relative to your project directory) that
+will contain Hosting assets to be uploaded with firebase deploy. If you
+have a build process for your assets, use your build's output directory.
+
+? What do you want to use as your public directory? public
+? Configure as a single-page app (rewrite all urls to /index.html)? No
+✔  Wrote public/404.html
+✔  Wrote public/index.html
+
+i  Writing configuration info to firebase.json...
+i  Writing project information to .firebaserc...
+
+✔  Firebase initialization complete!
+deligence@Deligence:~/Ravi_Training/your-first-pwapp-master/final$ sudo firebase deploy
+
+=== Deploying to 'pwaapptest'...
+
+i  deploying hosting
+i  hosting: found 2 files in public directory
+✔  hosting: file upload complete
+i  hosting: finalizing version...
+✔  hosting: version finalized
+i  hosting: releasing new version...
+✔  hosting: release complete
+
+✔  Deploy complete!
+
+Project Console: https://console.firebase.google.com/project/pwaapptest/overview
+Hosting URL: https://pwaapptest.firebaseapp.com

@@ -1,0 +1,46 @@
+<body>
+<pre style="font-size:20px;">
+
+What is a service worker
+A service worker is a script that your browser runs in the background, separate from a web page, opening the door to features that don't need a web page or user interaction. Today, they already include features like push notifications and background sync. In the future, service workers might support other things like periodic sync or geofencing. The core feature discussed in this tutorial is the ability to intercept and handle network requests, including programmatically managing a cache of responses.
+
+The reason this is such an exciting API is that it allows you to support offline experiences, giving developers complete control over the experience.
+
+Before service worker, there was one other API that gave users an offline experience on the web called AppCache. There are a number of issues with the AppCache API that service workers were designed to avoid.
+
+Things to note about a service worker:
+
+It's a JavaScript Worker, so it can't access the DOM directly. Instead, a service worker can communicate with the pages it controls by responding to messages sent via the postMessage interface, and those pages can manipulate the DOM if needed.
+Service worker is a programmable network proxy, allowing you to control how network requests from your page are handled.
+It's terminated when not in use, and restarted when it's next needed, so you cannot rely on global state within a service worker's onfetch and onmessage handlers. If there is information that you need to persist and reuse across restarts, service workers do have access to the IndexedDB API.
+Service workers make extensive use of promises, so if you're new to promises, then you should stop reading this and check out Promises, an introduction.
+The service worker life cycle
+A service worker has a lifecycle that is completely separate from your web page.
+
+To install a service worker for your site, you need to register it, which you do in your page's JavaScript. Registering a service worker will cause the browser to start the service worker install step in the background.
+
+Typically during the install step, you'll want to cache some static assets. If all the files are cached successfully, then the service worker becomes installed. If any of the files fail to download and cache, then the install step will fail and the service worker won't activate (i.e. won't be installed). If that happens, don't worry, it'll try again next time. But that means if it does install, you know you've got those static assets in the cache.
+
+When installed, the activation step will follow and this is a great opportunity for handling any management of old caches, which we'll cover during the service worker update section.
+
+After the activation step, the service worker will control all pages that fall under its scope, though the page that registered the service worker for the first time won't be controlled until it's loaded again. Once a service worker is in control, it will be in one of two states: either the service worker will be terminated to save memory, or it will handle fetch and message events that occur when a network request or message is made from your page.
+
+Below is an overly simplified version of the service worker lifecycle on its first installation.
+
+service worker lifecycle
+
+Prerequisites
+Browser support
+Browser options are growing. Service workers are supported by Chrome, Firefox and Opera. Microsoft Edge is now showing public support. Even Safari has dropped hints of future development. You can follow the progress of all the browsers at Jake Archibald's is Serviceworker ready site.
+
+You need HTTPS
+During development you'll be able to use service worker through localhost, but to deploy it on a site you'll need to have HTTPS setup on your server.
+
+Using service worker you can hijack connections, fabricate, and filter responses. Powerful stuff. While you would use these powers for good, a man-in-the-middle might not. To avoid this, you can only register service workers on pages served over HTTPS, so we know the service worker the browser receives hasn't been tampered with during its journey through the network.
+
+GitHub Pages are served over HTTPS, so they're a great place to host demos.
+
+If you want to add HTTPS to your server then you'll need to get a TLS certificate and set it up for your server. This varies depending on your setup, so check your server's documentation and be sure to check out Mozilla's SSL config generator for best practices.
+</pre>
+
+</body>
